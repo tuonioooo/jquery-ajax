@@ -20,7 +20,11 @@
 
     $(function(){
         $("#formdataId").click(function(){
-            var formData = new FormData($("#form1"));
+            var form=document.querySelector("#form1");
+            var form3 = document.getElementById("form1");
+            var formData = new FormData(form3);
+            //formData.append("name","allen");
+            //formData.append("passwd",123456);
             alert(formData);
             $.ajax({
                 url : '/ajax1',
@@ -52,7 +56,9 @@
 
 > note：
 >
-> 1.var formData = new FormData\($\("\#form1"\)\);  拿到表单里的值，封装到formData对象中
+> 1.var form=document.querySelector\("\#form1"\);
+>
+>   或var form3 = document.getElementById\("form1"\);  拿到表单里的数据值，通过封装到formData对象中
 >
 > 2.切记使用FormData时，ajax里的Type一定要是POST，GET不支持，如果使用GET，后台获取不到参数
 >
@@ -70,7 +76,7 @@
 >
 > processData : false, //告诉jQuery不要去处理发送的数据
 >
-> contentType 默认值为 application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。
+> contentType 默认值为 application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。
 >
 > contentType = false，是防止jQuery对其进行处理,formData 会自动把类型填充为multipart/form-data
 
