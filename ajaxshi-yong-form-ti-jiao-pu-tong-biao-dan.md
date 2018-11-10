@@ -49,6 +49,8 @@
 </html>
 ```
 
+* ## **前端H5页面GET方式**
+
 ```
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
@@ -71,8 +73,8 @@
             var data = $("#form2").serialize();
             alert(data);
             $.ajax({
-                url : '/ajax2Post',
-                type : 'post',
+                url : '/ajax2Get',
+                type : 'get',
                 data : data,
                 success : function(responseStr) {
                     alert("response：" + responseStr);
@@ -103,8 +105,6 @@
 > 2.serializeArray\(\)方法，将页面表单序列化成一个JSON结构的对象。注意不是JSON字符串
 >
 > \[{"name":"lihui", "age":"20"},{...}\]
-
-
 
 
 
