@@ -65,11 +65,18 @@
 > formData.append\("passwd",123456\);
 >
 > 自定义参数
+>
+> 4.一定要设置下面的参数，否则Jquery会自动处理
+>
+> processData : false, //告诉jQuery不要去处理发送的数据
+>
+> contentType 默认值为 application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。
+>
+> contentType = false，是防止jQuery对其进行处理,formData 会自动把类型填充为multipart/form-data
 
 * ## Java后台Controller
 
 ```
-
 @Controller
 @RequestMapping("/")
 public class AjaxController {
@@ -80,7 +87,6 @@ public class AjaxController {
         return "name={" + name + "}, passwd={"+passwd+"}";
     }
 }
-
 ```
 
 
