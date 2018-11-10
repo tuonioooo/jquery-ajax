@@ -21,27 +21,11 @@
 
     $(function(){
         $("#formdataId").click(function(){
-            var data=document.querySelector("#form1");
-            var data1 = document.getElementById("form1");
-            alert("data：" + JSON.stringify(data));
-            $.ajax({
-                url : '/ajax_upload_2',
-                type : 'post',
-                data : data,
-                processData : false, //告诉jQuery不要去处理发送的数据
-                contentType: false,//告诉jQuery不要去设置Content-Type请求头
-                success : function(responseStr) {
-                    alert("response：" + responseStr);
-                },
-                error : function(responseStr) {
-                    alert("失败:" + JSON.stringify(responseStr));//将    json对象    转成    json字符串。
-                }
-            });
-
+            document.getElementById("form1").submit();
         })
     });
 </script>
-<form action="" id="form1">
+<form action="/ajax_upload_2" method="post" id="form1" enctype="multipart/form-data">
     <input type="text" name="name" value="allen"/>
     <input type="text" name="passwd" value="123456"/>
     <input type="file" name="file" id="upload"/>
