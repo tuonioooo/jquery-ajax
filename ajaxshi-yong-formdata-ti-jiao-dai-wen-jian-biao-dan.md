@@ -7,7 +7,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ajax使用FormData提交普通表单</title>
+    <title>ajax使用FormData提交带文件表单</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -16,6 +16,7 @@
     <script src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
 </head>
 <body>
+<h1>ajax使用FormData提交带文件表单</h1>
 <script type="text/javascript">
 
     $(function(){
@@ -23,11 +24,9 @@
             var form=document.querySelector("#form1");
             var form3 = document.getElementById("form1");
             var formData = new FormData(form3);
-            //formData.append("name","allen");
-            //formData.append("passwd",123456);
-            alert(formData);
+            alert(formData.get("name")+"=="+formData.get("passwd")+"=="+formData.get("file"));
             $.ajax({
-                url : '/ajax1',
+                url : '/ajax_upload_1',
                 type : 'post',
                 data : formData,
                 processData : false, //告诉jQuery不要去处理发送的数据
@@ -43,10 +42,11 @@
         })
     });
 </script>
-<form action="" id="form1">
+<form action="" id="form1" enctype="multipart/form-data">
     <input type="text" name="name" value="allen"/>
     <input type="text" name="passwd" value="123456"/>
-    <input type="button" value="ajax使用FormData提交普通表单" id="formdataId"/>
+    <input type="file" name="file" id="upload"/>
+    <input type="button" value="ajax提交表单" id="formdataId"/>
 </form>
 <em id="zs_currvip"></em>
 
@@ -83,15 +83,10 @@
 * ## Java后台Controller
 
 ```
-@Controller
-@RequestMapping("/")
-public class AjaxController {
-
-    @PostMapping("/ajax1")
-    @ResponseBody
-    public String ajax1(String name, String passwd){
-        return "name={" + name + "}, passwd={"+passwd+"}";
-    }
+@PostMapping("/ajax_upload_1")
+@ResponseBody
+public String ajaxUpload1(String name, String passwd, MultipartFile file){
+        return "name={" + name + "}, passwd={"+passwd+"}," + file.getOriginalFilename();
 }
 ```
 
