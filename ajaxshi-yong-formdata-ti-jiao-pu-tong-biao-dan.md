@@ -78,7 +78,7 @@
 >
 > contentType 默认值为 application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。
 >
-> contentType = false，是防止jQuery对其进行处理,formData 会自动把类型填充为multipart/form-data
+> contentType = false，是防止jQuery对其进行处理
 
 * ## Java后台Controller
 
