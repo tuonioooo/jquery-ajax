@@ -29,7 +29,7 @@
                 url : '/ajax_upload_json_1',
                 type : 'post',
                 data : JSON.stringify(formData),//将formData对象转换成JSON对象
-                dataType: 'json',//采用json方式表单
+                dataType: 'json',//采用json方式传递表单
                 cache: false,
                 processData : false, //告诉jQuery不要去处理发送的数据
                 contentType: "application/json; charset=utf-8",//告诉jQuery不要去设置Content-Type请求头
