@@ -14,6 +14,9 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
     <script src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery.serializeJSON/2.8.1/jquery.serializejson.js"></script>
+
 </head>
 <body>
 <h1>ajax使用FormData提交带文件表单（传递方式用JOSN格式）</h1>
@@ -21,30 +24,32 @@
 
     $(function(){
         $("#formdataId").click(function(){
-            var form=document.querySelector("#form1");
-            var form3 = document.getElementById("form1");
-            var formData = new FormData(form3);
-            alert(formData.get("name")+"=="+formData.get("passwd")+"=="+formData.get("file"));
+            var formData = new FormData();
+            var data={};
+            data.name="Kobe";
+            data.passwd="123456";
+            formData.append("data", data);
+            formData.append("file", $("#upload")[0].files[0]);
+            alert(formData.get("data") + "==" + formData.get("file"));
             $.ajax({
                 url : '/ajax_upload_json_1',
                 type : 'post',
-                data : JSON.stringify(formData),//将formData对象转换成JSON对象
-                dataType: 'json',//采用json方式传递表单
+                data : formData,
                 cache: false,
                 processData : false, //告诉jQuery不要去处理发送的数据
-                contentType: "application/json; charset=utf-8",//告诉jQuery不要去设置Content-Type请求头
+                contentType: false,
                 success : function(responseStr) {
                     alert("response：" + responseStr);
                 },
                 error : function(responseStr) {
-                    alert("失败:" + JSON.stringify(responseStr));//将    json对象    转成    json字符串。
+                    alert("失败:" + JSON.stringify(responseStr));//将json对象转成json字符串。
                 }
             });
 
         })
     });
 </script>
-<form action="" id="form1">
+<form action="" id="form1" enctype="multipart/form-data">
     <input type="text" name="name" value="allen"/>
     <input type="text" name="passwd" value="123456"/>
     <input type="file" name="file" id="upload"/>
