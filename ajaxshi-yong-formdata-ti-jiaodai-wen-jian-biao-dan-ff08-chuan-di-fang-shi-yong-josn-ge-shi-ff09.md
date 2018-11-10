@@ -66,8 +66,8 @@
 ```
 @PostMapping("/ajax_upload_json_1")
 @ResponseBody
-public String requestJson(@RequestBody JSONObject requestParams){
-        return requestParams.toJSONString();
+public String ajaxUploadJson1(String data, MultipartFile file){
+        return data + "==" + file.getOriginalFilename();
 }
 ```
 
