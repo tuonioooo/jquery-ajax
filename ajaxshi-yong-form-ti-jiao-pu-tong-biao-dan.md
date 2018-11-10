@@ -106,5 +106,30 @@
 >
 > \[{"name":"lihui", "age":"20"},{...}\]
 
+* ## Java后台Controller
+
+```
+
+@Controller
+@RequestMapping("/")
+public class AjaxController {
+
+    @PostMapping("/ajax2Post")
+    @ResponseBody
+    public String ajax2Post(String name, String passwd){
+        return "name={" + name + "}, passwd={"+passwd+"}";
+    }
+
+    @GetMapping("/ajax2Get")
+    @ResponseBody
+    public String ajax2Get(String name, String passwd){
+        return "name={" + name + "}, passwd={"+passwd+"}";
+    }
+
+
+}
+
+```
+
 
 
