@@ -58,7 +58,7 @@
 >
 > 1.var form=document.querySelector\("\#form1"\);
 >
->   或var form3 = document.getElementById\("form1"\);  拿到表单里的数据值，通过封装到formData对象中
+> 或var form3 = document.getElementById\("form1"\);  拿到表单里的数据值，通过new FormData\(form3\)封装到formData对象中
 >
 > 2.切记使用FormData时，ajax里的Type一定要是POST，GET不支持，如果使用GET，后台获取不到参数
 >
