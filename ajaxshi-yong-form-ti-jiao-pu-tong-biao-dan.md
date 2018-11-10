@@ -1,4 +1,4 @@
-# ajax使用Form提交普通表单
+# ajax使用Form提交普通表单（GET、POST）
 
 * ## **前端H5页面POST方式**
 
@@ -109,7 +109,6 @@
 * ## Java后台Controller
 
 ```
-
 @Controller
 @RequestMapping("/")
 public class AjaxController {
@@ -128,7 +127,6 @@ public class AjaxController {
 
 
 }
-
 ```
 
 
